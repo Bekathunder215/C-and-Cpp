@@ -12,7 +12,7 @@ typedef struct tf* tp;
 tp s,b,aux,temp;
 char fry;
 
-void push (tp *s, tp *b, int da)
+void push (tp *s, tp *b, int da) //this creates a stack "block"
 {
 	tp temp,aux,s1= *s,b2= *b;
 	temp=(tp)malloc(sizeof(struct tf));
@@ -33,7 +33,7 @@ void push (tp *s, tp *b, int da)
 	}
 }
 
-void pri (tp s)
+void pri (tp s) //this prints with pointer traverse
 {
 	tp aux;
 	aux=s;
@@ -45,7 +45,8 @@ void pri (tp s)
 		i++;		
 	}
 }
-void pa (tp s)
+
+void pa (tp s) //this prints recursively
 {
 	if(s==NULL)
     {
@@ -59,7 +60,7 @@ void pa (tp s)
     }
 }
 
-void pop(tp *s, tp *b)
+void pop(tp *s, tp *b) //this deletes the stack "block"
 {
 	tp aux=*s;
 	if((*s)==NULL)
@@ -88,10 +89,10 @@ void menu()
 	tp h, t, aux, temp;
 	s=NULL;
 	b=NULL;
-	printf("WELCOME to Stack incorporated!\notan exei pop den exei stop ;)\n");
+	printf("WELCOME to Stack incorporated!\n");
 	while (fry!='Q')
 	{
-		printf("\nPress input \nP for print\nS for special print\nI to push\nD to pop\nQ to quit program:\t");
+		printf("\nPress input \nP for print\nS for recursive print\nI to push\nD to pop\nQ to quit program:\t");
 		fry='a';
 		fflush(stdin);
 		fry=getchar();
@@ -107,7 +108,7 @@ void menu()
 		{
 			if (s==NULL)
 			{
-				printf("\n There is no list\n");
+				printf("\n There is no Stack\n");
 				check=1;
 			}
 			else
@@ -138,11 +139,12 @@ void menu()
 				{
 					fry2='h';
 				}
-				if (fry2=='n' || fry2=='N')
+				else if (fry2=='n' || fry2=='N')
 				{
 					fry2='e';
 				}
-				if ((fry2!='h') && (fry2!='e'))
+				else
+					((fry2!='h') && (fry2!='e'));
 					printf("\nInvalid input try again!");
 			}
 		fry2='a';
@@ -151,7 +153,7 @@ void menu()
 		if (fry=='P' || fry=='p')
 		{ 
 		  if (h==NULL)
-		  printf("\nThere is no list\n");
+		  printf("\nThere is no Stack\n");
 		  else 
 		  {
 			printf("\nPRINTING\n\n");
@@ -163,7 +165,7 @@ void menu()
 		if (fry=='S' || fry=='s')
 		{
 			  if (h==NULL)
-			  printf("\nThere is no list\n");
+			  printf("\nThere is no Stack\n");
 			  else 
 			 {
 				printf("\nPRINTING\n\n");
@@ -181,9 +183,9 @@ void menu()
 }
 
 
-
-int main(void){
-menu();
-return 0;
+int main(void)
+{
+	menu();
+	return 0;
 }
 
