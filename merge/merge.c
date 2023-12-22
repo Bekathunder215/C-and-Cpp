@@ -23,28 +23,31 @@ int main(void)
 		printf("\nPress: \n\ti to Insert Array.\n\tp to Print.\n\ts to Mergesort \n\tq to Quit.\n");
 		fflush(stdin);
 		scanf("%c",&c);
-		if(c=='i'||c=='I')
+		switch (c)
 		{
-			insert_A(A);
-			c=='a';
-		}
-		if(c=='p'||c=='P')
-		{
-			print_array(A,B,Asize,Bsize);
-			c=='a';
-		}
-		if(c=='s'||c=='S')
-		{
-			if(A[0]==NULL)
-				printf("\nThere are NO arrays to sort");
-			else
-				mergesort(A,0,Asize);
-			c=='a';
-		}
-		if(c=='q'||c=='Q')
-		{
-			printf("\nGoodbye\n\n");
-			return 0;
+			case 'i':
+			case 'I':
+				insert_A(A);
+				break;
+			case 'p':
+			case 'P':
+				print_array(A,B,Asize,Bsize);
+				break;
+			case 's':
+			case 'S':
+				if(A[0]==NULL)
+					printf("\nThere are NO arrays to sort");
+				else
+					mergesort(A,0,Asize);
+				c=='a';
+				break;
+			case 'q':
+			case 'Q':
+				printf("\nGoodbye\n\n");
+				return 0;
+			default:
+				printf("\nPlease use an allowed character\n\n");
+				break;
 		}
 	}
 	return 0;
